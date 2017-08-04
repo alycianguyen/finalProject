@@ -1,0 +1,170 @@
+/*!
+ * Start Bootstrap - Scrolling Nav (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+#post123{
+  font-size: 50px;
+  font-weight: bold;
+}
+
+
+/* NAV STUFF BOXES THINGS */
+.wrapper{
+  -webkit-columns: 100px 3; /* Chrome, Safari, Opera */
+  columns: 200px 3;
+}
+
+.box {
+  /*float: left;*/
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  /*background-color: white;*/
+  /*padding: 10px;*/
+  margin: auto;
+}
+
+#postBox {
+  background-color: white;
+}
+
+#pollBox {
+  background-color: white;
+}
+
+#photoBox {
+  background-color: white;
+}
+
+/* POSTS */
+#wrapper{
+  width: 800px;
+  margin: 0 auto;
+}
+
+#makingThePost, #actualPosts {
+    border: 10px solid white;
+    float: left;
+    min-height: 450px;
+    color: white;
+}
+#makingThePost {
+     width: 250px;
+     background-color: #111;
+}
+#actualPosts {
+     width: 550px;
+     background-color: #777;
+}
+
+#submit{
+  color: black;
+}
+
+#name2{
+  color: black;
+}
+
+#message2{
+  color: black;
+}
+
+/* HEADER */
+.page-scroll{
+  font-size: 25px;
+  color: pink;
+}
+
+#planit{
+  font-size: 40px;
+  color: black;
+}
+
+#welcome{
+  font-size: 70px;
+  font-weight: bold;
+  color: black;
+}
+
+#post, #photo, #poll{
+  color: black;
+
+}
+/* ALYCIA'S CSS */
+
+body {
+  background-color: #fff;
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.uploadForm {
+  color: black;
+}
+.grid {
+  font-size: 16px;
+  margin: 0 auto;
+  max-width: 960px;
+  min-width: 320px;
+  padding: 0;
+  width: 100%;
+}
+.grid:after {
+  clear: both;
+}
+
+.body {
+  clear: both;
+}
+.body:after {
+  clear: both;
+}
+.body ul {
+  box-sizing: border-box;
+  padding: 5px;
+  width: 100%;
+}
+.body ul li {
+  box-sizing: border-box;
+  list-style: none;
+  padding: 5px;
+}
+
+.product {
+  background-color: #333;
+  height: 300px;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+
+}
+
+.product img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
+.image {
+  height: 280px;
+  width: 280px;
+  object-fit: cover;
+}
+
+.col {
+  display: block;
+  float: left;
+}
+
+.span_1_of_3 {
+  min-width: 300px;
+}

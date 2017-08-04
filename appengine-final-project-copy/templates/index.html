@@ -4,6 +4,9 @@
     <link rel="shortcut icon" type="image/png" href="/resources/pink.ico">
     <link rel="stylesheet" type="text/css" href="/resources/main.css">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Didact+Gothic|Open+Sans+Condensed:300" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/scripts/main.js"></script>
+    <script src="jquery-3.2.1.min.js"></script>
     <meta charset="utf-8">
     <title> PLAN-IT </title>
 
@@ -11,18 +14,16 @@
   </head>
   <body>
 
-    <!-- <img id="logo" src="resources/pink.png" alt="logo" height="300" width="350"> -->
-    <h1> plan <br>it </h1>
+    <img id="logo" src="resources/pink.png" alt="logo" height="400" width="400">
+    <!-- <h1> PLAN <br> &nbsp;&nbsp;&nbsp;IT </h1> -->
     <div class="codeInput">
       <center>
 
-      <form method="post" action ="">
+      <form method="get" action ="/custom">
         <label id="returningCode" for="code1"> enter your code :</label> <br>
           <input id="codebox" type="text" name="code1"/>
+      </form>
 
-      <!-- <form method="post" action ="">
-          <label id="newCode" for="newCode"> Or create a new one: <br>
-            <input id="newCodeBox" type="text" name="newCode"/> -->
 
       </center>
     </div>

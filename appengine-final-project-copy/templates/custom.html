@@ -1,51 +1,268 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="shortcut icon" type="image/png" href="resources/pink.ico">
+    <link rel="stylesheet" type="text/css" href="resources/custom.css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Antic|Didact+Gothic|Open+Sans+Condensed:300" rel="stylesheet">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="resources/bootstrap.min.css" rel="stylesheet">
+
+        <!-- jQuery -->
+        <script src="scripts/jquery.js"></script>
+
+
+    <!-- Custom CSS -->
+    <link href="resources/scrolling-nav.css" rel="stylesheet">
     <meta charset="utf-8">
     <title> PLAN-IT </title>
 
-    <style>
-
-
-    </style>
-  </head>
-  <body>
-
-    <h1> Welcome to {{code1}}'s page! </h1>
-
-    <!-- COMMENTS -->
-
-    <div id="respond">
-
-      <h3>Make a post:</h3>
-
-      <form action="" method="post">
-
-
-         <input id="hiddenCode" type="hidden" name="code1" value={{code1}}>
-
-
-          <label id="name" for="name"> Enter your name:
-            <br> <input id="name" type="text" name="name"/> <br>
-
-          <label id="returningCode" for="message"> Enter your message:
-            <br> <input id="message" type="text" name="message"/> <br>
-
-          <input type="submit" value="Submit">
-      </form>
-      <br>
-      <br>
-
-      Posts: <br>
-      {% for comment in name_and_messages %}
-          {{comment['name']}}: {{comment['message']}} <br>
-      {% endfor %}
-
-    </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
+     $(document).ready(function() {
+       $(".vote").click(function() {
+         console.log("Vote!!!");
+       });
+     });
+
+     function voteClick(div){
+       var count = 0;
+       console.log("clicked")
+       $.post("/count", {
+             activity_name: $(div).find("#vote").text()},
+             function(data){
+               console.log(data)
+               // $(div).find("#count").text(data.count)
+               $(div).find("#count").text(data);
+               console.log($(div).find("#count").text());
+             }
+     );
+     }
 
     </script>
+  </head>
+  <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+                                            <!-- NAV BAR -->
+
+    <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="navbar-brand page-scroll" id="planit" href="#page-top"> PLAN-IT</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" id="post"href="#about">Posts</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </li>
+                    <li>
+                        <a class="page-scroll" id="poll"href="#services">Polls</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </li>
+                    <li>
+                        <a class="page-scroll" id="photo"href="#contact">Photos</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Section -->
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <center> <h1 id="welcome"> Welcome to {{code1}}'s page! </h1> </center>
+                    <br><br><br><br>
+                    <div class="wrapper">
+                      <span class="box"><h2 id="postBox"> make a <br> poll </h2></span>
+                      <span class="box"><h2 id="pollBox"> make a <br> poll </h2></span>
+                      <span class="box"><h2 id="photoBox"> upload <br> photos </h2></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Posts Section -->
+    <section id="about" class="about-section">
+      <h1 id="post123">Posts </h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <br>
+                      <div id="respond">
+
+                        <div id="wrapper">
+
+                          <div id="makingThePost">
+                            <br><br>
+                            <h3>Make a post:</h3>
+
+                            <!-- <form action="https://www.facebook.com" method="get"> -->
+                            <form action="#about" method="post">
+
+                               <input id="hiddenCode" type="hidden" name="code1" value={{code1}}>
+
+
+                                <label id="name" for="name"> Enter your name:
+                                  <br> <input id="name2" type="text" name="name"/> <br>
+
+                                <label id="returningCode" for="message"> Enter your message:
+                                  <br> <input id="message2" type="text" name="message"/> <br>
+
+                                <input id="submit" type="submit" value="Submit"> <br>
+                                <!-- <input id="button78" type="button" value="Submit" onclick="getCustom()"> <br> (hit submit twice) -->
+                                <!-- <script>
+                                function getCustom() {
+                                  $.post({
+                                    url: "/custom",
+                                    data: {
+                                        name:$('#name').val(),
+                                        message:$('#message').val(),
+                                        code1:$('#hiddenCode').val()
+                                    },
+                                    success: function(result) {
+                                      setTimeout(function() {
+                                        $(document).html(result);
+                                      });
+                                    }
+                                  })
+                                }
+                                </script> -->
+                            </form>
+                            <br>
+                            <br>
+                          </div>
+
+                          <div id="actualPosts">
+                            <br>
+                            {% for comment in name_and_messages %}
+                              {% if loop.index < 11%}
+                               <strong> {{comment['name']}}: </strong> {{comment['message']}}  <br><br>
+                              {% endif %}
+                            {% endfor %}
+                          </div>
+                        </div>
+
+                      </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Polls Section -->
+    <section id="services" class="services-section" id="poll-photo">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Polls</h1>
+
+                    <form method="post" action ="#services">
+
+
+                       <label id="name2" for="name2"> Enter name of poll :</label>
+                          <input id="name2" type="text" name="name2"/><br>
+
+                        <h3> Type the different things you want and separate them by commas!</h3>
+                         <input type = 'text' name="activities">
+
+                      <p><input type="submit" value="Submit"></p>
+
+                 </form>
+
+                    <h1> Name of poll is: {{name2}}</h1>
+                   {% for activity in activities_list %}
+                    <div onclick="voteClick(this)">
+                      <p> Votes for <h3 id="vote">{{activity['activities']}}</h3> is <h3 id="count">{{activity['count']}}</h3> <strong> vote here </strong></p><br>
+                    </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photos Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1> Photos </h1>
+                    <div class="grid">
+
+                  <!-- file_upload -->
+                  <form action="/file_upload" enctype="multipart/form-data" method="post" class="uploadForm">
+                     <input id="hiddenCode" type="hidden" name="code1" value={{code1}}>
+                    <div>Enter your name: <input type="text" name="username"/></div>
+                    <div><input type="file" name="file"/></div>
+                    <div><input type="submit" value="Upload"></div>
+                  </form>
+                  <section class="body">
+                    <ul>
+                      {% for im in images %}
+                      <li class="col span_1_of_3">
+                        <div class="product">
+                          <img src="/images?name={{ im }}" class="image">
+                        </div>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </section>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- js for this page -->
+    <script src="scripts/main.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="scripts/bootstrap.min.js"></script>
+
+    <!-- Scrolling Nav JavaScript -->
+    <script src="scripts/jquery.easing.min.js"></script>
+    <script src="scripts/scrolling-nav.js"></script>
 
 
   </body>
